@@ -35,3 +35,4 @@ export class NotificationScheduler {
     return this.intervalId !== null;
   }
 }
+

@@ -68,3 +68,4 @@ echo "5. Start services: pm2 start ecosystem.config.js"
 echo "6. Save PM2 configuration: pm2 save && pm2 startup"
 echo ""
 echo "🎉 Your TODO List app is ready for production!"
+

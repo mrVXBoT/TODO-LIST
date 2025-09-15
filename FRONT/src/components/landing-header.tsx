@@ -53,51 +53,57 @@ export default function LandingHeader() {
     };
 
   return (
-    <aside className="fixed top-0 right-0 h-screen w-20 md:w-24 bg-gradient-to-b from-blue-600 to-purple-700 flex flex-col items-center justify-center py-6 z-30 shadow-2xl">
-        <div className="flex flex-col items-center gap-12">
-            <div className="flex flex-col items-center gap-4">
-                <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={toggleTheme}
-                    className="text-white/80 hover:text-white hover:bg-white/10 interactive-scale"
-                >
-                    <Sun className="h-6 w-6 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                    <Moon className="absolute h-6 w-6 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-                    <span className="sr-only">{t.landingHeader.toggleTheme}</span>
-                </Button>
-                <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" size="icon" className="text-white/80 hover:text-white hover:bg-white/10 interactive-scale">
-                            <Globe className="h-6 w-6" />
-                            <span className="sr-only">{t.landingHeader.changeLanguage}</span>
-                        </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end" className="bg-background/80 backdrop-blur-sm">
-                        <DropdownMenuLabel>{t.landingHeader.language}</DropdownMenuLabel>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuRadioGroup value={language} onValueChange={handleLanguageChange}>
-                            <DropdownMenuRadioItem value="en">English</DropdownMenuRadioItem>
-                            <DropdownMenuRadioItem value="fa">فارسی</DropdownMenuRadioItem>
-                        </DropdownMenuRadioGroup>
-                    </DropdownMenuContent>
-                </DropdownMenu>
-            </div>
+    <header className="sticky top-0 z-50 w-full border-b bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm">
+      <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2">
+          <Logo className="h-6 w-6 md:h-8 md:w-8 text-primary" />
+          <span className="font-bold text-lg md:text-xl text-primary">TASK0</span>
+        </Link>
 
-            <div className="flex flex-col items-center gap-6">
-                 <Link href="/" className="flex items-center gap-2">
-                    <Logo className="h-8 w-8 text-white" />
-                </Link>
-                <nav className="flex flex-col items-center gap-4">
-                    <Button variant="ghost" asChild className="text-white/80 hover:text-white hover:bg-white/10">
-                        <Link href="/login">{t.landingHeader.logIn}</Link>
-                    </Button>
-                    <Button variant="secondary" asChild className="bg-white/90 text-primary hover:bg-white font-semibold">
-                        <Link href="/login">{t.landingHeader.signUp}</Link>
-                    </Button>
-                </nav>
-            </div>
+        {/* Navigation & Controls */}
+        <div className="flex items-center gap-2 md:gap-4">
+          {/* Theme Toggle */}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={toggleTheme}
+            className="text-muted-foreground hover:text-foreground"
+          >
+            <Sun className="h-4 w-4 md:h-5 md:w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+            <Moon className="absolute h-4 w-4 md:h-5 md:w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+            <span className="sr-only">{t.landingHeader.toggleTheme}</span>
+          </Button>
+
+          {/* Language Dropdown */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-foreground">
+                <Globe className="h-4 w-4 md:h-5 md:w-5" />
+                <span className="sr-only">{t.landingHeader.changeLanguage}</span>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="bg-background/95 backdrop-blur-sm">
+              <DropdownMenuLabel>{t.landingHeader.language}</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuRadioGroup value={language} onValueChange={handleLanguageChange}>
+                <DropdownMenuRadioItem value="en">English</DropdownMenuRadioItem>
+                <DropdownMenuRadioItem value="fa">فارسی</DropdownMenuRadioItem>
+              </DropdownMenuRadioGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          {/* Auth Buttons */}
+          <div className="flex items-center gap-2">
+            <Button variant="ghost" asChild className="hidden sm:inline-flex">
+              <Link href="/login">{t.landingHeader.logIn}</Link>
+            </Button>
+            <Button asChild className="text-sm md:text-base px-3 md:px-4">
+              <Link href="/login">{t.landingHeader.signUp}</Link>
+            </Button>
+          </div>
         </div>
-    </aside>
+      </div>
+    </header>
   );
 }

@@ -69,3 +69,4 @@ Write-Host "4. Start services: pm2 start ecosystem.config.js" -ForegroundColor W
 Write-Host "5. Save PM2 configuration: pm2 save && pm2 startup" -ForegroundColor White
 Write-Host ""
 Write-Host "🎉 Your TODO List app is ready for production!" -ForegroundColor Green
+
